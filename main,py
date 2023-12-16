@@ -2,10 +2,11 @@ from dotenv import load_dotenv, find_dotenv
 from langchain.llms import OpenAI
 
 llm = OpenAI(model_name="text-davinci-003")
+load_dotenv(find_dotenv())
+print(llm("Explain large language models in one sentence"))
 
 def main():
-    load_dotenv(find_dotenv())
-    llm("Explain large language models in one sentence")
+    return 0
 
 if __name__ == "__main__":
     main()

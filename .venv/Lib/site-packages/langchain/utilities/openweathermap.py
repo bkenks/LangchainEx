@@ -1,9 +1,7 @@
 """Util that calls OpenWeatherMap using PyOWM."""
 from typing import Any, Dict, Optional
 
-from pydantic import Extra, root_validator
-
-from langchain.tools.base import BaseModel
+from langchain.pydantic_v1 import BaseModel, Extra, root_validator
 from langchain.utils import get_from_dict_or_env
 
 
@@ -13,8 +11,8 @@ class OpenWeatherMapAPIWrapper(BaseModel):
     Docs for using:
 
     1. Go to OpenWeatherMap and sign up for an API key
-    3. Save your API KEY into OPENWEATHERMAP_API_KEY env variable
-    4. pip install wolframalpha
+    2. Save your API KEY into OPENWEATHERMAP_API_KEY env variable
+    3. pip install pyowm
     """
 
     owm: Any
@@ -31,14 +29,13 @@ class OpenWeatherMapAPIWrapper(BaseModel):
         openweathermap_api_key = get_from_dict_or_env(
             values, "openweathermap_api_key", "OPENWEATHERMAP_API_KEY"
         )
-        values["openweathermap_api_key"] = openweathermap_api_key
 
         try:
             import pyowm
 
         except ImportError:
             raise ImportError(
-                "pyowm is not installed. " "Please install it with `pip install pyowm`"
+                "pyowm is not installed. Please install it with `pip install pyowm`"
             )
 
         owm = pyowm.OWM(openweathermap_api_key)
