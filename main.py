@@ -3,11 +3,11 @@ from langchain.llms import OpenAI
 
 def main():
     
-    llm = OpenAI(model_name="text-davinci-003")
     load_dotenv(find_dotenv())
+    llm = OpenAI(model_name="text-davinci-003")
 
     try:
-        print(llm("Explain large language models in one sentence"))
+        print(llm(input()))
     except KeyboardInterrupt:
         pass
 
