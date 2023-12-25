@@ -11,7 +11,6 @@ def main():
     except KeyboardInterrupt:
         pass
 
-    return 0
 
 if __name__ == "__main__":
     main()
