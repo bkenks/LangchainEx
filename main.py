@@ -1,6 +1,6 @@
 from dotenv import load_dotenv, find_dotenv
 from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage
 
 def main():
@@ -13,10 +13,10 @@ def main():
     messages = [HumanMessage(content=text)]
 
     # Uncomment to use LLM Text Model
-    #llm.invoke(text)
+    print(llm.invoke(text))
 
     # Uncomment to use ChatModel
-    #chat_model.invoke(messages)
+    #print(chat_model.invoke(messages))
 
 
 if __name__ == "__main__":
